@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baking Facts</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        #factDisplay {
+            margin: 20px 0;
+            font-size: 1.2em;
+            color: #555;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Baking Facts</h1>
+        <p id="factDisplay">Click the button to see a random baking fact!</p>
+        <button id="factButton">Show Random Fact</button>
+    </div>
+    <script>
+        const facts = [
+            "Baking is a method of cooking that uses dry heat, typically in an oven.",
+            "The Maillard reaction, which occurs during baking, is responsible for the browning of baked goods.",
+            "Yeast is a common leavening agent used in baking to make bread rise.",
+            "Baking soda and baking powder are both chemical leaveners that help baked goods rise.",
+            "The temperature of ingredients can affect the outcome of baked goods; for example, room temperature butter incorporates better into batters.",
+            "Overmixing batter can lead to tough baked goods, especially in recipes that contain flour and gluten.",
+            "Different types of flour have varying protein content, which affects the texture of baked goods.",
+            "Baking is both an art and a science, requiring precise measurements and techniques.",
+            "The first known recipes for baked goods date back to ancient Egypt around 2600 BC.",
+            "Baking can be therapeutic and is often used as a form of stress relief."
+        ];
+
+        document.getElementById('factButton').addEventListener('click', function() {
+            const randomIndex = Math.floor(Math.random() * facts.length);
+            const factDisplay = document.getElementById('factDisplay');
+            factDisplay.textContent = facts[randomIndex];
+            
+            // Add animation class
+            factDisplay.classList.remove('show');
+            void factDisplay.offsetWidth; // Trigger reflow
+            factDisplay.classList.add('show');
+        });
+    </script>
+</body>
+</html>
